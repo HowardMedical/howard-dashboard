@@ -1595,8 +1595,7 @@
         function updateMRRView() {
             const filter = document.querySelector('#mrr .filter-btn.active')?.dataset.filter || 'all';
             const sort = document.querySelector('#mrr .sort-btn.active')?.dataset.sort || 'newest';
-            let filtered = filter === 'all' ? [...data.mrr] : data.mrr.filter(m => m.stage === filter);
-            
+            let filtered = filter === 'all' ? data.mrr.filter(m => m.stage !== 'won' && m.stage !== 'lost') : data.mrr.filter(m => m.stage === filter);       
             // Sort
             if (sort === 'next-action') {
                 filtered.sort((a, b) => {
